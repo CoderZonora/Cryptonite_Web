@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>CRUD Operations</h2>
+
+<form id="createProductForm">
+    <h3>Create Product</h3>
+    <label for="createName">Name:</label><br> 
+    <input type="text" id="createName" name="name"><br>
+    <label for="createAuthor">Author:</label><br>
+    <input type="text" id="createAuthor" name="author"><br>
+    <input type="button" value="Create" onclick="createProduct()">
+</form>
+
+<!--The 'for' attribute associates the label with the input field that has the 'id' createName-->
+
+<form id="updateProductForm">
+    <h3>Update Product</h3>
+    <label for="updateId">ID:</label><br>
+    <input type="text" id="updateId" name="id"><br>
+    <label for="updateName">New Name:</label><br>
+    <input type="text" id="updateName" name="name"><br>
+    <label for="updateAuthor">New Author:</label><br>
+    <input type="text" id="updateAuthor" name="author"><br>
+    <input type="button" value="Update" onclick="updateProduct()">
+</form>
+<br>
+<form id="deleteProductForm">
+    <h3>Delete Product</h3>
+    <label for="deleteId">ID:</label><br>
+    <input type="text" id="deleteId" name="id"><br>
+    <input type="button" value="Delete" onclick="deleteProduct()">
+</form>
+<br>
+<form id="readProductForm">
+    <h3>Read Product</h3>
+    <label for="readId">ID:</label><br>
+    <input type="text" id="readId" name="id"><br>
+    <input type="button" value="Read" onclick="readProduct()">
+</form>
+<br>
+<button onclick="getAllProducts()">Read All</button>
+<br>
+<button onclick="deleteAllProducts()">Deleted all entries!</button>
+
+<script>
+function createProduct() {
+    var name = document.getElementById('createName').value; //storing the input of form with id createName
+    var author = document.getElementById('createAuthor').value; // same as above
+    fetch('/demo/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `name=${name}&author=${author}`
+    })
+    .then(response => response.text()) // handles the return by fetch and then converts that response to txt
+    .then(data => alert(data)); // handles the return by response.text() and then converts to alert to display
+}
+
+function readProduct()
+{
+var id = document.getElementById('readId').value;
+fetch(`/demo/read/${id}`,{
+    method: 'GET'
+})
+.then(response => response.text())
+.then(data => alert(JSON.stringify(data)));
+}
+
+function updateProduct() {
+    var id = document.getElementById('updateId').value;
+    var name = document.getElementById('updateName').value;
+    var author = document.getElementById('updateAuthor').value;
+    fetch(`/demo/update/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded', // this MIME type is efficient for alphanumeric payloads of small size. see onenote link for details
+        },
+        body: `name=${name}&author=${author}`
+    })
+    .then(response => response.text())
+    .then(data => alert(data));
+}
+
+function deleteProduct() {
+    var id = document.getElementById('deleteId').value;
+    fetch(`/demo/delete/${id}`, {
+        method: 'DELETE'
+    })
+    .then(response => response.text())
+    .then(data => alert(data));
+}
+
+function getAllProducts() {
+    fetch('/demo/all')
+    .then(response => response.json())
+    .then(data => alert(JSON.stringify(data)));
+}
+/*
+
+If you don’t use JSON.stringify(data) and instead just use alert(data), 
+the alert box will display [object Object] if data is a JavaScript object. 
+This is because the alert function converts its argument to a string, and 
+the default string representation of a JavaScript object is [object Object].
+JSON.stringify(data) is used to convert the JavaScript object data into a JSON string. 
+This allows you to view the contents of the object in the alert box in a readable format.
+So, if you want to see the actual data in the alert box, you should use JSON.stringify(data). 
+If you don’t stringify the data, you won’t be able to see the actual data in the alert box. 
+Instead, you’ll just see [object Object].
+
+*/
+
+function deleteAllProducts() {
+    fetch('/demo/deleteAll',
+    {method :'DELETE'})
+    .then(response => response.text())
+    .then(data => alert(data));
+}
+</script>
+
+</body>
+</html>
