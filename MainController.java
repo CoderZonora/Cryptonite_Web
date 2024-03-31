@@ -53,7 +53,7 @@ public @ResponseBody String getAllProducts() {
 
     @DeleteMapping(path="/delete/{id}")
     public @ResponseBody String deleteProduct(@PathVariable Long id) {
-        Optional<Product> optionalProduct = productRepository.findById(id); // returns empty instance if entity with given ID not found
+        Optional<Product> optionalProduct = productRepository.findById(id); 
     if(optionalProduct.isPresent()) { 
         productRepository.deleteById(id);
         return "Deleted";
@@ -66,7 +66,7 @@ public @ResponseBody String getAllProducts() {
    
     @PutMapping(path="/update/{id}")
     public @ResponseBody String updateProduct(@PathVariable Long id, @RequestParam String name, @RequestParam String author) {
-        Optional<Product> optionalProduct = productRepository.findById(id); // returns empty instance if entity with given ID not found
+        Optional<Product> optionalProduct = productRepository.findById(id); 
     if(optionalProduct.isPresent()) { // isPresent() method is used to check optional returns True if value present else retuns False 
         Product p = optionalProduct.get();
         p.setName(name);
