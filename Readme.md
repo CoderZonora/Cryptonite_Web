@@ -100,7 +100,23 @@ Also I made a mistake in deleteAllProducts() method of not specifying the DELETE
 
 <h3>Local Setup</h3>
 
-For running this locally, jdk 21 needs to be installed on the computer.
+
+Method 1:
+Clone the git repo.
+Open in an IDE of your choice so that the necessary dependencies get installed.
+Run the main class.
+The application should be running at https://localhost:8080
+
+
+Method 2:
+If there is a .jar file available, download that.
+Make sure java 21 is installed on the system.
+Run ```java -jar <file_name>.jar```.
+The application should be running at https://localhost:8080
+
+
+Manual method:
+For running this locally, jdk 21(java 21) needs to be installed on the computer.
 Start by initializing a new spring boot project either by going to start.spring.io and generating a project or using spring initilizer in their IDE if it suppots it.
 the project should have following specifications:
 Project - Maven
@@ -115,6 +131,5 @@ Dependencies: Web
 Extract and open the generated file in the IDE of choice.
 Replace the application.properties and pom.xml files with the ones in the project.Build the maven project again so that the required dependencies get downloaded.
 Add the four java files under the directory which contains CRUDApplication.java  and delete the original file.
-Under application.properties set ```spring.datasource.url=jdbc:sqlite:<path_to_src>/crypt.db``` and replace <path_to_src> with path where the src directory is, i.e. root of the application.
 Put the index.html in src/main/resources/static
 Run the CrudBasicApplication.java. After few seconds go to 127.0.0.1/8080 on the browser and the portal should be accessible.
