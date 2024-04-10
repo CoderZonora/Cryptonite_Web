@@ -1,6 +1,6 @@
 <h1>Challenge Report</h1>
 
-The challenge is hosted at http://20.193.136.145:1337 on my Azure virtual machine.
+The challenge is hosted at http://<machine_ip>:1337 on my Azure virtual machine.
 
 The site is a small book library holding upto 10 books with their name, author name and nummber of pages.It has a login form and registration and logging in is required by registering a user.
 On logging in it gets 5 random books. There are options to Add books and a search feature.
