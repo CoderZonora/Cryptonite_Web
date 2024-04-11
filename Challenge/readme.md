@@ -26,7 +26,7 @@ Then prepared statements are being used to create the sql queries.
 /delete is using a blacklist ```const BLACKLIST = ["delete", "update", "drop", "insert", "view", "sleep"];``` for the title.
 
 There are also the following rate-limits:
-![image info](./images/rate_limit.png)
+![img](rate_limit.png)
 
 In username only lowercase and numbers allowed and between 5-30 characters
 In password Lowercase,uppercase,numbers and certain symbols allowed. Length between 5-60 characters.
