@@ -26,15 +26,24 @@ Then prepared statements are being used to create the sql queries.
 /delete is using a blacklist ```const BLACKLIST = ["delete", "update", "drop", "insert", "view", "sleep"];``` for the title.
 
 There are also the following rate-limits:
+
 ![img](rate_limit.png)
+
 
 In username only lowercase and numbers allowed and between 5-30 characters
 In password Lowercase,uppercase,numbers and certain symbols allowed. Length between 5-60 characters.
 
 
-The utils.js file has an admin bot. And there is a user name admin whose hashed password is given in the source.
-Current thought: I have to find a JSONP endpoint in the allowed sites mentioned in the CSP and add that as an XSS when adding a new book to execute some js code to log in as the admin.
+The utils.js file has an admin bot.Trying to figure out what it does.
+And there is a user name admin whose hashed password is given in the source but cracking bcypt hashes is difficult.
 
-Tried: <style>body {background-color: red !important;}</style> in Add Books and it did work for the page.
+Current thought: 
+I have to find a JSONP endpoint in the allowed sites mentioned in the CSP and add that as an XSS when adding a new book to execute some js code to allow to log in as the admin.
+Can execute commands using the style tag like:
+``` <style>body {background-color: red !important;}</style>``` in Add Books.
+
+
+![img](css.png)
+
 
 As script-src is default , scripts from openlibrary.org will be allowed if I can find a JSONP endpoint in it.
