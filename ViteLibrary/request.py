@@ -1,9 +1,9 @@
 import requests
 import json
 
-HOST_URL = "http://20.193.136.145:1337"
-HOST_URL = "http://localhost:1337"
-HOOK_URL = "https://webhook.site/616e7181-19d4-40e7-8545-f6c871aeb819"
+HOST_URL = "<machine_ip>" # If running on a online VM or container
+HOST_URL = "http://localhost:1337" #If running locally
+HOOK_URL = "https://webhook.site/616e7181-19d4-40e7-8545-f6c871aeb819" # Change to yours
 
 # Normal headers can directly initialsed by def register(params, headers={})
 
