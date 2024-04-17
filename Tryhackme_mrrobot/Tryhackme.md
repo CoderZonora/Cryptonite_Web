@@ -2,7 +2,7 @@
 On entering we are give a sort of commmand line where we can enter some commands.
 fsociety shows video saying "Are you ready to join fsociety"
 prepare shows another video clip form the show.
-inform shows some newspaper clippings about some articles and some comment. [!clippings.img]
+inform shows some newspaper clippings about some articles and some comments.
 question also shows some photos
 wakeup shows another clip
 join opens page with place to enter email address to join fsociety.
