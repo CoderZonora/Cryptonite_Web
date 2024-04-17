@@ -32,3 +32,4 @@ Ran Hydra for the login form but it did not find it even after five minutes.
 I had to see the password from the solution because the wordlist was very long and it approximated 19hrs to go through it and the password was one the last in the wordlist.
 It was "ER28-0652".
 
+Using these credentials logged in as Admin for the wordpress account. Went through the plugins to see if any of the were exploitable but all were inactive.Tried to find if there was some specific reverse shell vulnerablity in this Wordpress version but did not find anything eye catching.
