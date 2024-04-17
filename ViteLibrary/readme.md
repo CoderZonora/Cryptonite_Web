@@ -50,3 +50,13 @@ So final points to note:
 3)Flag is stored as link of one of the books description in the startingdata.json which is the database of books for the admin user.
 
 After combining all these came up with the solve script.
+Here’s a breakdown of the payload:
+
+An <iframe> is created with a srcdoc attribute. The srcdoc attribute allows you to write HTML code directly within the iframe.
+
+Inside the srcdoc, a <script> tag is used to load a script from ‘https://openlibrary.org/api/books’. This script is expected to return a JSONP callback function.
+
+The callback function is designed to perform a fetch request to an API endpoint (/api/delete/) with a manipulated title parameter. The title parameter is manipulated using a SQL Injection attack (UNION SELECT group_concat(link) FROM BOOKS--). This SQL injection is designed to concatenate all the link values from the BOOKS table into a single string.
+
+The response from the fetch request is then sent to a webhook site via a POST request to intercept the flag.
+
