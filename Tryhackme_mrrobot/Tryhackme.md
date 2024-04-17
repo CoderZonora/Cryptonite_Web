@@ -12,7 +12,7 @@ Went though some of the code in the top. Found a link to images/420/420.jpg whic
 Going to robots.txt showed two paths.
 Ok entering 420 on the command list takes to the image.
 
-[!robots/txt](robots.png)
+[!robots](robots.png)
 
 The first path gave the first key.
 The pther path downloaded a dictionary which I assume is a wordlist for some user account whose password I will have to crack using the wordlist.
