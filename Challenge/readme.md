@@ -22,19 +22,12 @@ Also reading other possible methods to exploit.
 On reading the source files these were the observation:
 sqlite3 is used as database engine.But sql injection is not directly possible because:
 JS objects are being used to store the inputs first.
-Then prepared statements are being used to create the sql queries.
-/delete is using a blacklist ```const BLACKLIST = ["delete", "update", "drop", "insert", "view", "sleep"];``` for the title.
+Then prepared statements are being used to create the sql queries for all but delete.
+/delete is using a blacklist ```const BLACKLIST = ["delete", "update", "drop", "insert", "view", "sleep"];``` for the title and is vulnerable to Sql injection.
 
 There are also the following rate-limits:
 
-![img](rate_limit.png)
-
-
-In username only lowercase and numbers allowed and between 5-30 characters
-In password Lowercase,uppercase,numbers and certain symbols allowed. Length between 5-60 characters.
-
-
-The utils.js file has an admin bot.Trying to figure out what it does.
+The utils.js file has an admin bot. So if a book is reported then the admin bot will look into the book and that means it will execute our XSS payloads.
 And there is a user name admin whose hashed password is given in the source but cracking bcypt hashes is difficult.
 
 Current thought: 
@@ -47,3 +40,13 @@ Can execute commands using the style tag like:
 
 
 As script-src is default , scripts from openlibrary.org will be allowed if I can find a JSONP endpoint in it.
+
+So final points to note:
+
+1)The title field in Add books is vulnerable to XSS but wil only execute scripts if ooriginating from openlibrary as defined in the CSP.
+
+2)The delete books is vulnerable to sql injection.
+
+3)Flag is stored as link of one of the books description in the startingdata.json which is the database of books for the admin user.
+
+After combining all these came up with the solve script.
