@@ -99,7 +99,7 @@ And its done!
 
 <h1>Additional commmands</h1>
 
-![Additional_commands](Additional commands.png)
+![Additional_commands](Additional_commands.png)
 
 <h1>Final learnings:</h1>
 
