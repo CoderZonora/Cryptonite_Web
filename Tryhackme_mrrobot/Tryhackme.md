@@ -44,6 +44,7 @@ Then got to know that Wordpress accepts themes as .php scripts.
 So uploaded [this](https://github.com/pentestmonkey/php-reverse-shell) script into the editor of 404.php page to get a reverse-shell.
 To receive to the shell also set up a netcat listener on port 1234 using ```nc -lnvp 1234```.
 
+
 ![Php-script](php.png)
 
 Now on going to the 404.php page the script executes and we get a reverse shell but we are currently daemon, a low-level  with limited access.
@@ -67,18 +68,23 @@ The next step obviously was priviledge escalation to root.For this I had recentl
 To find which binary to use ran ```find -perm -4000 2>dev/null```.
 Here's a breakdown:
 
-find: This is the command used to search for files in a directory hierarchy.
--perm -4000: This option tells find to only match files which have the setuid bit set. 
+```find```: This is the command used to search for files in a directory hierarchy.
+
+```-perm -4000```: This option tells find to only match files which have the setuid bit set. 
 The setuid permission (represented by the 4000) allows a user who runs the file to have the same privileges as the owner of the file.
-2>dev/null: This part of the command redirects standard error (2) to /dev/null, which is a special file that discards all data written to it (essentially “throwing away” the error messages).
+
+```2>dev/null```: This part of the command redirects standard error (2) to /dev/null, which is a special file that discards all data written to it (essentially “throwing away” the error messages).
 This is often done to suppress error messages from the command.
+
 So, in short, this command will find all files in the current directory (and its subdirectories) that have the setuid bit set, 
 and it will not display any error messages. This can be useful for finding potential security risks, as files with the setuid bit can sometimes be exploited for privilege escalation. 
 
 ![binaries](binaries.png)
+
 Out of the binaries on the list only nmap had an binary in GTFObins. So used that to gain root.
 
-![GTFo_nmap](GTFo_nmap)
+![GTFo_nmap](GTFO_nmap.png)
+
 
 ![root](root.png)
 
@@ -89,14 +95,18 @@ The key was located in ~/root.
  
 And its done!
 
-![room_complete](room_complete.png)
+![Room_complete](Room_complete.png)
 
 <h1>Additional commmands</h1>
 
-![Additional_commmands](Additional_commmands.png)
+![Additional_commands](Additional commands.png)
 
- Final learnings:
+<h1>Final learnings:</h1>
+
  Using gobuster and Hydra
+ 
  PHP reverse shell
+ 
  SUID
+ 
  Priviledge escalation
