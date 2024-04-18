@@ -41,7 +41,7 @@ Using these credentials logged in as Admin for the wordpress account.
 Went through the plugins to see if any of the were exploitable but all were inactive.
 Tried to find if there was some specific reverse shell vulnerablity in this Wordpress version but did not find anything eye catching.
 Then got to know that Wordpress accepts themes as .php scripts. 
-So uploaded [this](https://github.com/pentestmonkey/php-reverse-shell) script into the editor of 404.php page to get a reverse-shell.
+So uploaded [this](https://github.com/pentestmonkey/php-reverse-shell) script into the editor of 404.php page to get a reverse-shell. Changed the port to 1234 and ip to VPN ip of my machine.
 To receive to the shell also set up a netcat listener on port 1234 using ```nc -lnvp 1234```.
 
 
