@@ -64,6 +64,7 @@ Used the pasword to log in as robot and get the key.
 
 ![key2](key2.png)
 
+<h1>Privilege escalation</h1>
 The next step obviously was priviledge escalation to root.For this I had recently learned about [GTFOBins](https://gtfobins.github.io/#) in a CTF challenge.
 To find which binary to use ran ```find -perm -4000 2>dev/null```.
 Here's a breakdown:
