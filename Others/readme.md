@@ -30,4 +30,10 @@ print(requests.request("GET", URL+"/api/file?filename=/proc/self/cwd/flag.txt", 
 ```
 
 - Making a bot run long:
-await new Promise((resolve) => setTimeout(resolve, 9999999));
+`await new Promise((resolve) => setTimeout(resolve, 9999999));`
+
+-Sql injection notes:
+
+You can put NULL if you don't know the column name of a database. If using UNION and do not know the number of columns you could try to manually put NULL,NULL,NULL,... as many until you get some kind of valid response
+Eg : 2 UNION SELECT NULL,NULL,NULL,NULL
+Now to find out the type of database if it's not returning back error codes you could try to put @@VERSION instead of NULL and then search what you get back
