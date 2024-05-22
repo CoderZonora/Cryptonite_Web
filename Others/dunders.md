@@ -42,9 +42,8 @@ Now, it gives following output.
 Thus, by adding this method, suddenly magic has happened and the error you were getting earlier, has gone away.
 Thus we can use them to override default behaviou to suit our needs instead of having to write our own methods to do the same.
 
-Q2 read up on all of these, try them out in python console, and write a brief expl + a code snippet showing their usage for the top 10(in solving chals) important ones among them according to your research
-__init__,__del__,__repr__,__str__,__call__,__len__,__getitem__,__setitem__,__delitem__,__iter__,__next__,__getattr__,__setattr__,__delattr__,__dir__,__enter__,__exit__,__bool__,__format__,__doc__,__class__,__module__,__bases__,__import__,__name__,__qualname__,__annotations__,__dict__,__slots__,__weakref__,__reduce__,__reduce_ex__,__copy__,__deepcopy__,__slots__,__mro__,__globals__,__builtins__
- 
+
+<h2>Important Magic methods:</h2>
 
 __init__: This is a special method in Python classes, it is the constructor method for a class. It’s called when an object is instantiated.
 
