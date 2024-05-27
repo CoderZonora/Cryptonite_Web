@@ -10,12 +10,11 @@ often enabling them to take complete control of the server.
 As the name suggests, server-side template injection payloads are delivered and evaluated server-side,
 potentially making them much more dangerous than a typical client-side template injection. 
 
-SSTI basically works because Template Engines can evaluate operations using certain special operators like ```${{<%[%'"}}%\```.
+SSTI basically works because Template Engines can evaluate operations using certain special operators like ```${{<%[%'"}}%\```. 
 
-```
+
 So if user input is directly passed without sanitization and not in the proper syntax such that only data gets passed, then SSTI vulnerabilities arise.
 Eg:
-
 
 ```
 from flask import Flask, render_template_string
@@ -30,6 +29,7 @@ def profile_page(user):
 app.run()
 
 ```
+
 
 Here input is neither sanitized nor passed only as data .
 
