@@ -1,3 +1,4 @@
+Solved and understood after the CTF
 
 Visited `api-docs`. The `_id` attribute and challenge name suggest that MongoDB is used. We can POST a new fruit, which does nothing and we can GET fruit given its `id`.
 
