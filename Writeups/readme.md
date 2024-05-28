@@ -1,1 +1,1 @@
-# Repo fro writeups of CTF challenges
+# Repo for writeups of CTF challenges
