@@ -20,7 +20,7 @@ you need to package it (serialize it) into a box, ready for transport. When the 
 they unpack the box (deserialize) to get the book back in its original form.
 So, while both processes involve changing the format of the data, encoding is more about changing the representation of the data, while serialization is about making the data transportable while preserving its state. 
 
-Q: research the various method to convert an **object in memory** to a file and then read that file back into an object in
+Various serialization methods:
 
 - C++ - There is no standard way to do it. Different libraries implement it differently.
  For simple objects we can use built it function like such:
@@ -105,25 +105,32 @@ int main()
 }
 
 ```
-But for complex functions using dedicated libraries like Boost or cereal is preffered.
+But for complex functions using dedicated libraries like Boost or cereal is preferred.
 
-- python:
+- Python:
 1) using JSON,YAML or other similar human readable serialisation languages. JSON offers methods like json.dumps() for serialisation and json.loads() for deserialisation.
  Output is human readable and much easier compatiblity between other languages.
 2) using the pickle library which uses binary protocol and is not human readable. Faster than JSON but also introduces some security flaws.
 3) create custom serialisation using __getstate__() and __setstate__().
 
-- java - 
+- Java - 
 1) Java has a default method of serialization implemented thorugh the Serializable interface along with the ObjectOutputStream object.
  Only those classes which are marked as serialisable can be serialised or else they will throw a NotSerializableException.
+Eg:
+```
+FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+objectOutputStream.writeObject(user);
+```
+where user is an object and filePath is path of output file after serialization.
  
-2) Custom serialization using the Externalizable interface which has the writeExternal() and readExternal methods.
+3) Custom serialization using the Externalizable interface which has the writeExternal() and readExternal methods.
  Can be useful when trying to serialize an object that has some unserializable attributes. 
 
-3) Using external dependencies like GSON, YAML beans, Jackson to serialize to languages like JSON, YAML etc. 
+4) Using external dependencies like GSON, YAML beans, Jackson to serialize to languages like JSON, YAML etc. 
 Each dependencie has its own set of features and benefits for a particular use case.
 
-4) Using binary serialization like Google Protocol buffer (profbus). 
+5) Using binary serialization like Google Protocol buffer (profbus). 
 
 Q: 500 word short note on python pickle
 - how does it do the magic i.e. explain the pickled file content structure, what escape characters, sequences start stop bits etc are used
@@ -142,11 +149,10 @@ The STOP opcode marks the end of the pickle stream.
 So, the magic of pickle is in its ability to convert complex Python objects into a sequence of simple operations 
 that can be easily stored and later used to reconstruct the original object. 
 However, it’s important to note that pickle is not secure against erroneous or maliciously constructed data. 
- 
-- what does this pickle unpickle, explain what every character translates, for e.g. if it was bae64 you were given `eyJhbGciO` you would say
-ey:`{`
-J: `"` and so on
-```py
+
+Given byte array:
+
+```
 arr = bytes([
     0x80, 0x04, 0x95, 0x1A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5D,
     0x94, 0x28, 0x4B, 0x01, 0x4B, 0x02, 0x7D, 0x94, 0x8C, 0x03, 0x63, 0x61,
