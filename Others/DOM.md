@@ -1,78 +1,72 @@
-What is dompurify
+What is dompurify?
 
-    Configuration, what to allow, what not
-	
-	 #intro#
-	 DOMPurify is a DOM-only, super-fast, uber-tolerant XSS sanitizer for HTML, MathML and SVG.
-	 It is basically a security mechanism to sanitize user inputs and get clean HTML code. 
-	 It required a DOM to work and preffered dom is jsdom. It is used as it is simple to implement and does not cause much overhead.
-	 
-	 #Usage# 
-	 How to use:
-	 
-	```
-	const createDOMPurify = require('dompurify');
-	const { JSDOM } = require('jsdom');
-	const window = new JSDOM('').window;
-	const DOMPurify = createDOMPurify(window);
-	const clean = DOMPurify.sanitize('<b>hello there</b>');
-	```
-	
-	How not to use:
-	
-	```
-	import DOMPurify from 'dompurify';
-	
-	let userComment = '<img src=x onerror=alert("XSS")>';
-	let cleanComment = DOMPurify.sanitize(userComment);
-	cleanComment += '<p>Thank you for your comment!</p>';
-	document.getElementById('comments').innerHTML = cleanComment;
-	```
-	The good version of the above would be:
-	
-	```
-	import DOMPurify from 'dompurify';
+DOMPurify is a DOM-only, super-fast, uber-tolerant XSS sanitizer for HTML, MathML and SVG.
+It is basically a security mechanism to sanitize user inputs and get clean HTML code. 
+It required a DOM to work and preffered dom is jsdom. It is used as it is simple to implement and does not cause much overhead.
 
-	let userComment = '<img src=x onerror=alert("XSS")>';
+**How to use**:
+ 
+```
+const createDOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
+const clean = DOMPurify.sanitize('<b>hello there</b>');
+```
 
-	let cleanComment = DOMPurify.sanitize(userComment);
-	
-	document.getElementById('comments').innerHTML = cleanComment;
+**How not to use**:
 
-	document.getElementById('comments').innerHTML += '<p>Thank you for your comment!</p>';
-	```
-	 
-	 #configs#
-	 DOMpurify has a lot of configuration options which can be used to fine tune each aspect you want.	
-	 It works on whitelists for attributes and tags which can be found [here](https://github.com/cure53/DOMPurify/tree/main/src). 
-	 Any attribute or tag outside of this is directly blocked unless specifically configured to be allowed.
-	 That can be done like this:
-	 `const clean = DOMPurify.sanitize(dirty, {ALLOWED_TAGS: ['b', 'q'], ALLOWED_ATTR: ['style']});`
-	 Using a similar syntax you can configure different aspects of dompurify like forbidding some tags, 
-	 adding custom attributes or tags to the whitelists,changing if only a certain profile should be filtered etc.
-	 Eg:
-	 
-	 ```
-			 // allow all safe SVG elements and SVG Filters, no HTML or MathML
-		const clean = DOMPurify.sanitize(dirty, {USE_PROFILES: {svg: true, svgFilters: true}});
+```
+import DOMPurify from 'dompurify';
 
-		// leave all safe HTML as it is and add <style> elements to block-list
-		const clean = DOMPurify.sanitize(dirty, {FORBID_TAGS: ['style']});
+let userComment = '<img src=x onerror=alert("XSS")>';
+let cleanComment = DOMPurify.sanitize(userComment);
+cleanComment += '<p>Thank you for your comment!</p>';
+document.getElementById('comments').innerHTML = cleanComment;
+```
 
-		// leave all safe HTML as it is and add style attributes to block-list
-		const clean = DOMPurify.sanitize(dirty, {FORBID_ATTR: ['style']});
+The good version of the above would be:
 
-		// extend the existing array of allowed tags and add <my-tag> to allow-list
-		const clean = DOMPurify.sanitize(dirty, {ADD_TAGS: ['my-tag']});
-	 ```
-	 Other customization demos can be found [here](https://github.com/cure53/DOMPurify/tree/main/demos).
-	
-#Math tags
+```
+import DOMPurify from 'dompurify';
+let userComment = '<img src=x onerror=alert("XSS")>';
+let cleanComment = DOMPurify.sanitize(userComment)
+document.getElementById('comments').innerHTML = cleanComment;
+document.getElementById('comments').innerHTML += '<p>Thank you for your comment!</p>';
+```
+
+<h2>Configurations:</h2>
+
+ DOMpurify has a lot of configuration options which can be used to fine tune each aspect you want.	
+ It works on whitelists for attributes and tags which can be found [here](https://github.com/cure53/DOMPurify/tree/main/src). 
+ Any attribute or tag outside of this is directly blocked unless specifically configured to be allowed.
+ That can be done like this:
+ `const clean = DOMPurify.sanitize(dirty, {ALLOWED_TAGS: ['b', 'q'], ALLOWED_ATTR: ['style']});`
+ Using a similar syntax you can configure different aspects of dompurify like forbidding some tags, 
+ adding custom attributes or tags to the whitelists,changing if only a certain profile should be filtered etc.
+ Eg:
+ 
+ ```
+		 // allow all safe SVG elements and SVG Filters, no HTML or MathML
+	const clean = DOMPurify.sanitize(dirty, {USE_PROFILES: {svg: true, svgFilters: true}});
+
+	// leave all safe HTML as it is and add <style> elements to block-list
+	const clean = DOMPurify.sanitize(dirty, {FORBID_TAGS: ['style']});
+
+	// leave all safe HTML as it is and add style attributes to block-list
+	const clean = DOMPurify.sanitize(dirty, {FORBID_ATTR: ['style']});
+
+	// extend the existing array of allowed tags and add <my-tag> to allow-list
+	const clean = DOMPurify.sanitize(dirty, {ADD_TAGS: ['my-tag']});
+ ```
+ Other customization demos can be found [here](https://github.com/cure53/DOMPurify/tree/main/demos).
+
+**Math tags**
 The element is used to include math expressions in the current line. It is designed for the usage with MathML.
 It is just one of many other MathML tags like maction,mglyph etc but 
 whatever MathML element you want to use should be wrapped inside of the <math> tag.
 
-what are glyphs?
+**What are glyphs**
 Glyphs are basically special characters in html already defined and can be displayed by their alpha,decimal or hex definations. 
 
 Eg : `&pound;	&#163;	&#xA3;`	= &pound;
@@ -80,7 +74,7 @@ Eg : `&pound;	&#163;	&#xA3;`	= &pound;
 There is also a MathML tag called `mglyph` used to display non-standard symbols where existing 
 Unicode characters are not available but it has not been supported by any browsers.
 
-WHat is dom:
+<h3>What is DOM:</h3>
 
 The Document Object Model (DOM) is a programming API for HTML and XML documents.
 It defines the logical structure of documents and the way a document is accessed and manipulated. 
@@ -101,7 +95,7 @@ Nodes can also have event handlers attached to them. Once an event is triggered,
 One important property of DOM tree is structural isomorphism: if any two Document Object Model implementations are used 
 to create a representation of the same document, they will create the same structure model, with precisely the same objects and relationships.
 
-what's a dom parser:
+<h3>What's a dom parser:</h3>
 A DOM parser is a particular implementation which is used to parse(or convert) XML or HTML source code from a string into a DOM Document.
 Different parsers implement this parsing differently and there are multiple different parsers developed by different browsers,frameworks etc.
 
@@ -109,7 +103,7 @@ A dom parser allows to convert the raw string HTML or XML into a object structur
 However, because the DOM parser loads the entire document into memory, it can be inefficient for large documents. 
 For such cases, other types of parsers like SAX (Simple API for XML) or streaming parsers may be more appropriate. 
 
-How?
+<h3>How does it work?</h3>
 
 When you give an HTML document to a parser, it goes through several steps:
 
@@ -127,11 +121,7 @@ from the idea of HTML as a “soup” of open and close tags.
 
 The exact details of how errors are handled can vary between different parsers, but many follow the standards set out in the HTML specification. 
 
-
-choose a dom parser, preferably one using by browsers/dompurify and illustrate how 
-1 a good html
-2 a bad html i.e. one missing quotes, opening, closing tags
-gets rendered
+<h3>Illustration</h3>
 
 Good:
 
@@ -194,7 +184,7 @@ Gets converted to :
 Render views:
 
 ![a](Images/a.png)
-
+<br></br>
 ![b](Images/b.png)
-
+<br></br>
 ![c](Images/c.png)
