@@ -184,7 +184,7 @@ Gets converted to :
 Render views:
 
 ![a](Images/a.png)
-
+<br></br>
 ![b](Images/b.png)
-
+<br></br>
 ![c](Images/c.png)
