@@ -11,7 +11,7 @@ https://github.com/zigoo0/JSONBee/blob/master/jsonp.txt : Many other endpoints
 
 ![WSL](Images/WSL.png)
 
-![Listen](Images/nc listen.png)
+![Listen](Images/nc_listen.png)
 
 ![Termux](Images/termux.png)
 
