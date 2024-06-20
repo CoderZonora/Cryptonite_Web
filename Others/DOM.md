@@ -1,4 +1,4 @@
-What is dompurity -
+What is dompurify
 
     Configuration, what to allow, what not
 	
@@ -122,7 +122,7 @@ The error handling in a DOM parser is typically handled by the parsing algorithm
 This is because many web pages on the internet have small errors in their HTML, and browsers need to be able to display these pages correctly.
 
 When a DOM parser encounters an error like <img=a>, it tries to correct the error by making an educated guess about what the author intended.
-In this case, it might correct it to <img src="a">. This process is often referred to as “tag soup” parsing, a term that comes 
+In this case, it might correct it to `<img src="a">`. This process is often referred to as “tag soup” parsing, a term that comes 
 from the idea of HTML as a “soup” of open and close tags.
 
 The exact details of how errors are handled can vary between different parsers, but many follow the standards set out in the HTML specification. 
@@ -194,5 +194,7 @@ Gets converted to :
 Render views:
 
 ![a](Images/a.png)
+
 ![b](Images/b.png)
+
 ![c](Images/c.png)
