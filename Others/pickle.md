@@ -162,7 +162,7 @@ arr = bytes([
 
 ```
 
-![output](output.png)
+![output](Images/output.png)
 
 
 - `0: \x80 PROTO 4`: This sets the pickle protocol to version 4.

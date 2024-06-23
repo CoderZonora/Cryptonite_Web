@@ -9,11 +9,11 @@ https://github.com/zigoo0/JSONBee/blob/master/jsonp.txt : Many other endpoints
 
 <h1>NGROK</h1>
 
-![WSL](WSL.png)
+![WSL](Images/WSL.png)
 
-![Listen](nc listen.png)
+![Listen](Images/nc_listen.png)
 
-![Termux](termux.png)
+![Termux](Images/termux.png)
 
 - Accessing files if read permission
   If have access to read files in a system via a script running in the directory where challenge in running, can use `/proc/self/cwd/flag.txt`. /proc/self/cwd/flag.txt refers to the file named “flag.txt” located in the   current working directory of the process that accesses it. 
