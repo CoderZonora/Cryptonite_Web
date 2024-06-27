@@ -150,8 +150,7 @@ if __name__ == "__main__":
       print(flag)
     
     print(''.join(flag))
-    
-# FLAG{lyingthetime}
+    FLAG{lyingthetime}
 ```
 
 <h2>Noscript</h2>
