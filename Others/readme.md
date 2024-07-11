@@ -16,7 +16,8 @@ https://github.com/zigoo0/JSONBee/blob/master/jsonp.txt : Many other endpoints
 ![Termux](Images/termux.png)
 
 - Accessing files if read permission
-  If have access to read files in a system via a script running in the directory where challenge in running, can use `/proc/self/cwd/flag.txt`. /proc/self/cwd/flag.txt refers to the file named “flag.txt” located in the   current working directory of the process that accesses it. 
+  If have access to read files in a system via a script running in the directory where challenge in running, can use `/proc/self/cwd/flag.txt`.
+  /proc/self/cwd/flag.txt refers to the file named “flag.txt” located in the current working directory of the process that accesses it. 
 
 The /proc directory is a special directory in Linux that provides an interface to kernel data structures.
 It contains information about processes, system configuration, and other system-related details.
