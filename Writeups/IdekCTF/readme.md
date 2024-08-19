@@ -15,7 +15,7 @@ And most importantly it can even display httpOnly cookies which can't normally b
 https://www.webhackingtips.com/weekly-tips/week-8-stealing-httponly-cookies-from-phpinfo
 
 index.php
-This page accepts a name attribute in the GET request,creates a local variable with substring of this value(But does not use this variable!)
+This page accepts a name attribute in the GET request,creates a local variable with substring of this value (But does not use this variable!) 
 and then echo's the same after filtering some characters (`$trimmed = array("\r", "\n", "\t", "/", " ")`). 
 But this filter is not enough and it is vulnerable to XSS like `/?name=<svg%0conload=alert(123)>`. 
 
@@ -65,6 +65,6 @@ which is sent to the bot.
 Its basically a race condition where you generate a file containing the flag using one endpoint, leave it on a infinite loop to prevent the file from getting deleted and extract the 
 flag using another endpoint before the code  execution of the first one is stopped by the instance(which happens in about 1s).
 
-Very detailed and better writeup:
+Very detailed writeup:
 
 https://vaktibabat.github.io/posts/idek_2024/
