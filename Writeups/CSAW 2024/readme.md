@@ -1,9 +1,10 @@
-Writeup for Bucketwars challenge of CSAW CTF 
+# Writeup for Bucketwars challenge of CSAW CTF 
 
 The bucket url can be found by triggering any error ike 404.
 
 
 Firstly,after some thinking the hint "we don't make mistakes in these parts" could be pointing towards the concept of **versioning** in Amazon S3 buckets. 
+In hindsite the other endpoints had text which hinted towards versioning as well.
 
 So we run a script to fetch the version list and then all the older version files as well from the bucket using the filenames from the versions file obtained:
 
@@ -54,5 +55,5 @@ In one of the version files we get this comment:
     Oh it can't be
     <!-- Note to self: be sure to delete this password: versions_leaks_buckets_oh_my --> 
 ```
-And we find a image in a previous version of the v1 html(index_v1_t6G6A20JCaF5nzz6KuJR6Pj1zePOLAdB.html) and whats different about this is it was stored in another bucket and not in the same provider as the other images.
+And we find a image in a previous version of the v1 endpoint(index_v1_t6G6A20JCaF5nzz6KuJR6Pj1zePOLAdB.html) and whats different about this is it was stored in another bucket and not in the same provider as the other images.
 Running steghide on the image with the above password gives the flag.
