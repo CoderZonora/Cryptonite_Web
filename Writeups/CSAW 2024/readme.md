@@ -47,15 +47,57 @@ print("Timestamp\tSize\tFilename_VersionId")
 for file in files:
     getFile(file)
 	
-	```
-
-In one of the version files we get this comment:
+```
+The versions.json looks like this:
+```
+{
+    "Versions": [
+        {
+            "ETag": "\"666d672ebcbe877d88a58f691d36bad3\"",
+            "Size": 250563,
+            "StorageClass": "STANDARD",
+            "Key": "404.jpeg",
+            "VersionId": "4jvOLAIbh0mOi34Kntv1ClMpv_BWuNkz",
+            "IsLatest": false,
+            "LastModified": "2024-08-05T00:27:09.000Z"
+        },
+        {
+            "ETag": "\"9a5824c100e6975c203e2ae517c9ec0d\"",
+            "Size": 1555,
+            "StorageClass": "STANDARD",
+            "Key": "index_v1.html",
+            "VersionId": "CFNz2JPIIJfRlNfnVx8a45jgh0J90KxS",
+            "IsLatest": false,
+            "LastModified": "2024-08-05T00:20:08.000Z"
+        },
+        {
+            "ETag": "\"130f7fdffa9c3a0e24853b651dfe07ac\"",
+            "Size": 1571,
+            "StorageClass": "STANDARD",
+            "Key": "index_v1.html",
+            "VersionId": "t6G6A20JCaF5nzz6KuJR6Pj1zePOLAdB",
+            "IsLatest": false,
+            "LastModified": "2024-08-05T00:19:57.000Z"
+        },
+        {
+            "ETag": "\"2102e20ca90b0cec249c85e4cbed5f21\"",
+            "Size": 1575,
+            "StorageClass": "STANDARD",
+            "Key": "index_v2.html",
+            "VersionId": "null",
+            "IsLatest": true,
+            "LastModified": "2024-08-05T00:15:03.000Z"
+        },
+```
+In one of the previous version files we get this comment:
 
 ```
     Oh it can't be
     <!-- Note to self: be sure to delete this password: versions_leaks_buckets_oh_my --> 
 ```
-And we find a image in a previous version of the v1 endpoint(index_v1_t6G6A20JCaF5nzz6KuJR6Pj1zePOLAdB.html) and whats different about this is it was stored in another bucket and not in the same provider as the other images.
+
+And we find a image in a previous version of the v1 endpoint ( <b>index_v1_t6G6A20JCaF5nzz6KuJR6Pj1zePOLAdB.html</b> ) and what's different about this is it was stored in another bucket and not in the same provider as the other images.
+
 Running steghide on the image with the above password gives the flag.
 
-Note: The bucket was taken down quite early after the ctf ended so could not repoduce the steps.
+Note: The bucket was taken down quite early after the ctf ended so could not repoduce the steps to add images for reference.
