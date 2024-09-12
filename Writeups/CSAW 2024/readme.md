@@ -54,5 +54,5 @@ In one of the version files we get this comment:
     Oh it can't be
     <!-- Note to self: be sure to delete this password: versions_leaks_buckets_oh_my --> 
 ```
-And we find a image in a previous version of the v1 html(index_v1_t6G6A20JCaF5nzz6KuJR6Pj1zePOLAdB.html).
+And we find a image in a previous version of the v1 html(index_v1_t6G6A20JCaF5nzz6KuJR6Pj1zePOLAdB.html) and whats different about this is it was stored in another bucket and not in the same provider as the other images.
 Running steghide on the image with the above password gives the flag.
