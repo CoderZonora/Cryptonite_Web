@@ -35,7 +35,7 @@ It will connect to room 'textContent' but `query.get("room")` will return 'DOMPu
 ## The Actual Solution:
 A completely different approach is required. The socket.io URL is set client-side by using `location.search`, which according to the spec just searches for the first '?' in the URL passed, and everything after that (including the '?') is returned as the query string.
 
-We find the attack of using '@' in the URI. This works because as per the spec (RFC 3986, section 3.2.1), this format is a valid (but deprecated) URL:
+We find the attack of using '@' in the URI. This works because as per the spec [RFC 3986, section 3.2.1](https://www.rfc-editor.org/rfc/inline-errata/rfc3986.html), this format is a valid (but deprecated) 
 
 ```
 <scheme>://<user>:<password>@<host>:<port>/<url-path>
