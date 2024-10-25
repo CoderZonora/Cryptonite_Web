@@ -40,3 +40,5 @@ Though both are correct.
 Copasbin :  checkNpmDeps.js should be run when source given whenever feasible. Helps to narrow down and find implementation of specific vulns.
 Also a reminder that innerHTML does not allow inserting <script> tags specifically for XSS. Basically just use <img for XSS even normally.
 https://discord.com/channels/1100842688250654732/1100842689148244143/1282364982733836308
+
+
