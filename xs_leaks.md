@@ -1,8 +1,8 @@
-#XS - Leaks Report
+# XS - Leaks Report
 
 XS-Leaks is a WebEx method infer the information using side-channel attacks like timing attacks rather than directly accessing any data. 
 Most of the time it can be prevented by having the correct same origin and cross origin settings.
-
+But this attack vector is not always very reliable as some attacks might break due to a variety of external factors like DNS load times, network congestion etc.
  
 #### What is eTLD and TLD+1?
 
@@ -56,9 +56,7 @@ how many records matched a search.
 - Focus elements based on URL fragements:  Sometimes applications can use sensetive info as an id of an element on the page and we can use url fragments (https://example.com#sensitive-id) to brute force 
 the data depending on weather focus and blur events get fired ot not. 
 
-- Many others
+- [Many others](https://xsleaks.dev/docs/attacks/element-leaks/)
 
-Ref: [Other attacks](https://xsleaks.dev/docs/attacks/element-leaks/)
-
-
-Need to read more into this and solve its chals and read writeups. Till now only understood the attack not an actual ctf challenge. 
+Need to read more into this and solve its chals and read writeups. 
+Till now only majorly only referred to [this](https://blog.huli.tw/2022/06/14/en/justctf-2022-xsleak-writeup/) one. 
